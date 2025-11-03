@@ -35,4 +35,8 @@ menu_frame = tk.Frame(root, bg="black")
 diff_frame = tk.Frame(root, bg="black")
 quiz_frame = tk.Frame(root, bg="black")
 
+# place all frames in same position (only one visible at a time)
+for f in (menu_frame, diff_frame, quiz_frame):
+    f.place(relwidth=1, relheight=1)
+
 root.mainloop()
