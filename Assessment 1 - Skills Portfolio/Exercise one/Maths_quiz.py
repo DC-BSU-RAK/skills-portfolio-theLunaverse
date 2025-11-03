@@ -25,7 +25,14 @@ time_remaining = 30  # seconds remaining for current question
 timer_id = None  # reference to timer for cancellation
 
 # === App ===
+# Create main window
 root = tk.Tk()
 root.title("Maths Quiz")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
+
+# create three main frames (screens)
+menu_frame = tk.Frame(root, bg="black")
+diff_frame = tk.Frame(root, bg="black")
+quiz_frame = tk.Frame(root, bg="black")
+
 root.mainloop()
