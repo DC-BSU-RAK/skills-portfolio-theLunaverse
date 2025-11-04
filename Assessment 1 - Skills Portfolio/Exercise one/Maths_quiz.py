@@ -194,6 +194,17 @@ timer_label.place(relx=0.5, y=192, anchor="center")
 question_label = tk.Label(quiz_frame, font=("Comic Sans MS", 20, "bold"), bg="#131f44", fg="#FFFFFF")
 question_label.place(relx=0.5, y=250, anchor="center")
 
+# answer input area (container for entry box)
+entry_frame = tk.Frame(quiz_frame, bg="#17242c")
+entry_frame.place(relx=0.5, y=330, anchor="center")
+
+# answer entry box
+answer_entry = tk.Entry(entry_frame, font=("Comic Sans MS", 20, "bold"), width=10, 
+                        bg="#17242c", fg="#FFFFFF", insertbackground="#FFFFFF", 
+                        relief=tk.SOLID, bd=4, justify="center")
+answer_entry.pack(side=tk.LEFT, padx=10)
+answer_entry.bind('<Return>', lambda e: check_answer())  # allow Enter key to submit
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
