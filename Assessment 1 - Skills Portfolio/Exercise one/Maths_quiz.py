@@ -90,6 +90,18 @@ def start_timer():
     time_remaining = 30  # reset the timer to 30 seconds
     update_timer()       # begin the countdown
 
+def update_timer():
+    """Update timer display and check if time is up"""
+    global time_remaining, timer_id
+    if time_remaining > 0:
+        # change color to red when 10 seconds or less remain
+        timer_label.config(text=f"TIME: {time_remaining}s", 
+                        fg="#FF0000" if time_remaining <= 10 else "#FFA500")
+        time_remaining -= 1
+        timer_id = root.after(1000, update_timer)  # update every second by calling the function after 1 second
+    else:
+        time_up() # if timer hits 0, time-out
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
