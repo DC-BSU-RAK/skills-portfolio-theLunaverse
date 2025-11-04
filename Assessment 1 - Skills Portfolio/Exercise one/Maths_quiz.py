@@ -141,6 +141,43 @@ def is_correct(ans):
     num1, num2, op = current_question
     return ans == (num1 + num2 if op == '+' else num1 - num2)
 
+def check_answer():
+    """Validate and score the user's answer"""
+    global score, attempts
+    stop_timer() #  pause timer while checking the answer
+    
+    # validate input is a number
+    try:
+        user_answer = int(answer_entry.get())
+    except ValueError:
+        feedback_label.config(text="ENTER A VALID NUMBER!", fg="red")
+        start_timer() # restart timer because this wasn't a real attempt
+        return
+
+    if is_correct(user_answer):
+        # award points: 10 for first try, 5 for second try
+        points = 10 if attempts == 0 else 5
+        score += points
+        feedback_label.config(text=f"CORRECT! +{points} POINTS", fg="light green")
+        disable_inputs() # stop further typing
+        root.after(1500, next_question) # show next question after 1.5 seconds
+    else:
+        attempts += 1    # If the answer is wrong
+        if attempts < 2:
+            # give user a second chance
+            feedback_label.config(text="INCORRECT! TRY AGAIN!", fg="#FF4500")
+            answer_entry.delete(0, "end")
+            start_timer()
+        else:
+            # show correct answer after 2 failed attempts
+            num1, num2, op = current_question
+            correct = num1 + num2 if op == '+' else num1 - num2
+            feedback_label.config(text=f"INCORRECT! ANSWER: {correct}", fg="orange")
+            disable_inputs()
+            root.after(2000, next_question) # move on after 2 seconds
+    # update the score display at the top of the screen
+    score_label.config(text=f"SCORE: {score}/100")
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
