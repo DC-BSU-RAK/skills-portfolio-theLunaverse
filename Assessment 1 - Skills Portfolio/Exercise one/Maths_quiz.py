@@ -117,6 +117,25 @@ def time_up():
     disable_inputs() # shows 'time's up' and the correct answer
     root.after(2000, next_question)  # move to next question after 2 seconds
 
+def display_problem():
+    """Generate and display a new math problem"""
+    global current_question, attempts
+    num1, num2 = random_int(), random_int() # pick two random numbers based on the difficulty
+    op = decide_operation() # decide whether to use + or -
+    
+    # for subtraction, ensure result is positive (except in Advanced mode)
+    if op == '-' and num1 < num2 and difficulty != "Advanced":
+        num1, num2 = num2, num1
+    
+    current_question = (num1, num2, op) # save the current question (numbers and operation)
+    title_label.config(text=f"QUESTION {question_count + 1}/10") # update the question number at the top
+    question_label.config(text=f"{num1} {op} {num2} = ?")
+    feedback_label.config(text="")
+    answer_entry.delete(0, "end") # clear the answer box from any old answer
+    answer_entry.focus_set()  # put cursor in answer box
+    attempts = 0
+    start_timer()
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
