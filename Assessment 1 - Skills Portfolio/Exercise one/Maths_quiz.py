@@ -182,6 +182,10 @@ quiz_back_button.image = quiz_back_img # keep a reference so the image doesn't d
 quiz_back_button.bind("<Button-1>", lambda e: (stop_timer(), show_frame(diff_frame))) # stop timer when clicked and return to diff menu
 quiz_back_button.place(x=20, y=20)
 
+# question number label 
+title_label = tk.Label(quiz_frame, font=("Comic Sans MS", 24, "bold"), fg="#FFD700", bg="#58386c")
+title_label.place(relx=0.5, y=80, anchor="center")
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
