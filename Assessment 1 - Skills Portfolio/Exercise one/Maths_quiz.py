@@ -205,6 +205,13 @@ answer_entry = tk.Entry(entry_frame, font=("Comic Sans MS", 20, "bold"), width=1
 answer_entry.pack(side=tk.LEFT, padx=10)
 answer_entry.bind('<Return>', lambda e: check_answer())  # allow Enter key to submit
 
+# submit button
+submit_btn = tk.Button(entry_frame, text="SUBMIT", font=("Comic Sans MS", 14, "bold"), 
+                    command=check_answer, bg="#131f44", fg="#FFFFFF", # runs when the button is clicked
+                    activebackground="#303072", relief=tk.RAISED, bd=4, 
+                    cursor="hand2", padx=20, pady=12)
+submit_btn.pack(side=tk.LEFT, padx=10) # place the button next to the entry box
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
