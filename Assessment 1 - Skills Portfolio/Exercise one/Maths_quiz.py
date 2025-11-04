@@ -75,6 +75,7 @@ def start_quiz_with_difficulty(diff):
     score = 0 # reset score for new game
     question_count = 0 # reset question counter
     enable_inputs() # make sure inputs are active
+    score_label.config(text=f"SCORE: {score}/100")
     show_frame(quiz_frame)
     
 def show_frame(frame):
