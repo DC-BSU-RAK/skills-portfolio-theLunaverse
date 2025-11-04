@@ -129,5 +129,11 @@ diff_bg = tk.Label(diff_frame)
 diff_bg.pack(fill="both", expand=True) # fill entire menu screen
 diff_gif = GIFPlayer(diff_bg, DIFF_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
 
-    btn.bind("<Button-1>", lambda e, d=diff: start_quiz_with_difficulty(d))
+# Create three difficulty buttons (Easy, Moderate, Advanced)
+for i, (text, y, diff) in enumerate([("Play", 147, "Easy"), ("Play", 250, "Moderate"), ("Play", 352, "Advanced")]):
+    # create a label that acts like a button
+    btn = tk.Label(diff_frame, text=text, font=("Comic Sans MS", 14, "bold"), 
+                bg="#374a82", fg="white", cursor="hand2", padx=20, pady=8, relief=tk.RAISED, bd=2)
+    btn.place(x=450, y=y)
+
 root.mainloop()
