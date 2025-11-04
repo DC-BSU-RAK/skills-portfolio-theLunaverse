@@ -157,6 +157,24 @@ back_button.image = back_img
 back_button.bind("<Button-1>", lambda e: show_frame(menu_frame))
 back_button.place(relx=0.5, rely=0.93, anchor="center")
 
+# === Quiz Frame ===
+# loading and placing all three background GIFs (one for each difficulty)
+
+# easy
+hallow_bg = tk.Label(quiz_frame)
+hallow_bg.place(x=0, y=0, relwidth=1, relheight=1)
+hallow_gif = GIFPlayer(hallow_bg, HALLOW_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
+
+# moderate 
+jungle_bg = tk.Label(quiz_frame)
+jungle_bg.place(x=0, y=0, relwidth=1, relheight=1)
+jungle_gif = GIFPlayer(jungle_bg, JUNGLE_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
+
+# advanced
+crimson_bg = tk.Label(quiz_frame)
+crimson_bg.place(x=0, y=0, relwidth=1, relheight=1)
+crimson_gif = GIFPlayer(crimson_bg, CRIMSON_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
