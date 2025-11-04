@@ -178,6 +178,11 @@ def check_answer():
     # update the score display at the top of the screen
     score_label.config(text=f"SCORE: {score}/100")
 
+def disable_inputs():
+    """Prevent user from entering answer (during feedback)"""
+    answer_entry.config(state="disabled")
+    submit_btn.config(state="disabled")
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
