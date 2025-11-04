@@ -71,6 +71,15 @@ class GIFPlayer:
             self.job = None
 
 # === Quiz Logic Functions ===
+def random_int():
+    """Generate a random number based on difficulty level"""
+    if difficulty == "Easy":
+        return random.randint(0, 9)  # single digit
+    elif difficulty == "Moderate":
+        return random.randint(10, 99)  # two digits
+    else:
+        return random.randint(1000, 9999)  # four digits
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
