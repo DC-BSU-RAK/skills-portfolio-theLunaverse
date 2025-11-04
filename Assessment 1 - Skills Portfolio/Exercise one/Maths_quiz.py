@@ -153,4 +153,7 @@ for i, (text, y, diff) in enumerate([("Play", 147, "Easy"), ("Play", 250, "Moder
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
+
+# start the application on the menu screen
+show_frame(menu_frame)
 root.mainloop()
