@@ -85,4 +85,11 @@ menu_bg = tk.Label(menu_frame)
 menu_bg.pack(fill="both", expand=True) # make it fill the whole menu area
 menu_gif = GIFPlayer(menu_bg, MENU_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
 
+# --- Start button ---
+start_img = ImageTk.PhotoImage(Image.open(START_IMG_PATH).resize((280, 55), Image.LANCZOS))
+start_button = tk.Label(menu_frame, image=start_img, bg="black", cursor="hand2") # create a label to act as a clickable Start button
+start_button.image = start_img
+
+start_button.place(relx=0.5, rely=0.59, anchor="center")
+
 root.mainloop()
