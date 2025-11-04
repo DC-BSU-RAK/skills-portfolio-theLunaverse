@@ -175,6 +175,13 @@ crimson_bg = tk.Label(quiz_frame)
 crimson_bg.place(x=0, y=0, relwidth=1, relheight=1)
 crimson_gif = GIFPlayer(crimson_bg, CRIMSON_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
 
+# back button (returns to diff menu)
+quiz_back_img = ImageTk.PhotoImage(Image.open(BACK_IMG_PATH).resize((150, 40), Image.LANCZOS)) # create a label that acts as a Back button in the quiz screen
+quiz_back_button = tk.Label(quiz_frame, image=quiz_back_img, bg="black", cursor="hand2")
+quiz_back_button.image = quiz_back_img # keep a reference so the image doesn't disappear
+quiz_back_button.bind("<Button-1>", lambda e: (stop_timer(), show_frame(diff_frame))) # stop timer when clicked and return to diff menu
+quiz_back_button.place(x=20, y=20)
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
