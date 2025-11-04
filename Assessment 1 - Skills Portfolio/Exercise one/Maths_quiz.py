@@ -109,6 +109,14 @@ def stop_timer():
         root.after_cancel(timer_id) 
         timer_id = None
 
+def time_up():
+    """Handle when timer reaches zero"""
+    num1, num2, op = current_question
+    correct = num1 + num2 if op == '+' else num1 - num2
+    feedback_label.config(text=f"TIME'S UP! ANSWER: {correct}", fg="red")
+    disable_inputs() # shows 'time's up' and the correct answer
+    root.after(2000, next_question)  # move to next question after 2 seconds
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
