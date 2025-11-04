@@ -223,6 +223,15 @@ def start_quiz_with_difficulty(diff):
         crimson_gif.play()
         title_label.config(bg="#896c57")
     
+    # bring all quiz elements to front using lift
+    quiz_back_button.lift()
+    title_label.lift()
+    timer_label.lift()
+    question_label.lift()
+    entry_frame.lift()
+    feedback_label.lift()
+    score_label.lift()
+    display_problem()
 def show_frame(frame):
     """Switch to a different screen (menu, difficulty, or quiz)"""
     # stop all GIF animations
