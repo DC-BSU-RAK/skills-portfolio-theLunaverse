@@ -145,4 +145,7 @@ for i, (text, y, diff) in enumerate([("Play", 147, "Easy"), ("Play", 250, "Moder
                 bg="#374a82", fg="white", cursor="hand2", padx=20, pady=8, relief=tk.RAISED, bd=2)
     btn.place(x=450, y=y)
 
+# score label
+score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
+score_label.place(relx=0.5, y=455, anchor="center")
 root.mainloop()
