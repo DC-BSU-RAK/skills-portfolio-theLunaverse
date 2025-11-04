@@ -102,6 +102,13 @@ def update_timer():
     else:
         time_up() # if timer hits 0, time-out
 
+def stop_timer():
+    """stop the countdown timer"""
+    global timer_id
+    if timer_id:
+        root.after_cancel(timer_id) 
+        timer_id = None
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
