@@ -80,6 +80,10 @@ def random_int():
     else:
         return random.randint(1000, 9999)  # four digits
 
+def decide_operation():
+    """Randomly choose addition or subtraction"""
+    return random.choice(['+', '-'])
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
