@@ -84,6 +84,12 @@ def decide_operation():
     """Randomly choose addition or subtraction"""
     return random.choice(['+', '-'])
 
+def start_timer():
+    """Start a 30-second countdown timer"""
+    global time_remaining, timer_id
+    time_remaining = 30  # reset the timer to 30 seconds
+    update_timer()       # begin the countdown
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
