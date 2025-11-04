@@ -136,6 +136,11 @@ def display_problem():
     attempts = 0
     start_timer()
 
+def is_correct(ans):
+    """Check if the given answer is correct"""
+    num1, num2, op = current_question
+    return ans == (num1 + num2 if op == '+' else num1 - num2)
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
