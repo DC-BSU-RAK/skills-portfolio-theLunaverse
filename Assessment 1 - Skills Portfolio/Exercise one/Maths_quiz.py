@@ -123,4 +123,11 @@ quit_button.image = quit_img
 quit_button.bind("<Button-1>", lambda e: root.quit()) # when clicked, exit application
 quit_button.place(relx=0.5, rely=0.75, anchor="center")
 
+# === Difficulty Frame ===
+# create the label that holds the background GIF
+diff_bg = tk.Label(diff_frame)
+diff_bg.pack(fill="both", expand=True) # fill entire menu screen
+diff_gif = GIFPlayer(diff_bg, DIFF_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
+
+    btn.bind("<Button-1>", lambda e, d=diff: start_quiz_with_difficulty(d))
 root.mainloop()
