@@ -11,8 +11,11 @@ BASE_DIR = os.path.dirname(__file__)
 
 # getting paths to all media files (backgrounds and buttons) using os.path.join
 MENU_GIF_PATH = os.path.join(BASE_DIR, "media", "menu_wp.gif")
+DIFF_GIF_PATH = os.path.join(BASE_DIR, "media", "diff_wp.gif")
 START_IMG_PATH = os.path.join(BASE_DIR, "media", "start_btn.png")
 QUIT_IMG_PATH = os.path.join(BASE_DIR, "media", "quit_btn.png")
+BACK_IMG_PATH = os.path.join(BASE_DIR, "media", "back_btn.png")
+
 # === Settings ===
 WINDOW_WIDTH = 960
 WINDOW_HEIGHT = 540
