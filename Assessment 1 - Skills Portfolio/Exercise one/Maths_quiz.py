@@ -188,6 +188,17 @@ def enable_inputs():
     answer_entry.config(state="normal")
     submit_btn.config(state="normal")
 
+def next_question():
+    """Move to the next question or show results if quiz is complete"""
+    global question_count
+    stop_timer()
+    question_count += 1
+    if question_count < 10:
+        enable_inputs()
+        display_problem()
+    else:
+        display_results()
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
@@ -197,6 +208,20 @@ def start_quiz_with_difficulty(diff):
     enable_inputs() # make sure inputs are active
     score_label.config(text=f"SCORE: {score}/100")
     show_frame(quiz_frame)
+    
+    # set background and title color based on difficulty
+    if diff == "Easy":
+        hallow_bg.tkraise()
+        hallow_gif.play()
+        title_label.config(bg="#58386c")
+    elif diff == "Moderate":
+        jungle_bg.tkraise()
+        jungle_gif.play()
+        title_label.config(bg="#2596be")
+    else:
+        crimson_bg.tkraise()
+        crimson_gif.play()
+        title_label.config(bg="#896c57")
     
 def show_frame(frame):
     """Switch to a different screen (menu, difficulty, or quiz)"""
