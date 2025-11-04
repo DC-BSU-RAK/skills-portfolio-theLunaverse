@@ -79,4 +79,10 @@ quiz_frame = tk.Frame(root, bg="black")
 for f in (menu_frame, diff_frame, quiz_frame):
     f.place(relwidth=1, relheight=1)
 
+# === Menu Frame ===
+# create a label to hold background GIF
+menu_bg = tk.Label(menu_frame)
+menu_bg.pack(fill="both", expand=True) # make it fill the whole menu area
+menu_gif = GIFPlayer(menu_bg, MENU_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
+
 root.mainloop()
