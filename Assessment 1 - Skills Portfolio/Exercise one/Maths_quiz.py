@@ -190,6 +190,10 @@ title_label.place(relx=0.5, y=80, anchor="center")
 timer_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#29356d", fg="#FFA500")
 timer_label.place(relx=0.5, y=192, anchor="center")
 
+# math question label
+question_label = tk.Label(quiz_frame, font=("Comic Sans MS", 20, "bold"), bg="#131f44", fg="#FFFFFF")
+question_label.place(relx=0.5, y=250, anchor="center")
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
