@@ -183,6 +183,11 @@ def disable_inputs():
     answer_entry.config(state="disabled")
     submit_btn.config(state="disabled")
 
+def enable_inputs():
+    """Allow user to enter answer"""
+    answer_entry.config(state="normal")
+    submit_btn.config(state="normal")
+
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
     global difficulty, score, question_count
