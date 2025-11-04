@@ -232,6 +232,19 @@ def start_quiz_with_difficulty(diff):
     feedback_label.lift()
     score_label.lift()
     display_problem()
+
+def display_results():
+    """Show final score and grade, ask to play again"""
+    stop_timer() # make sure the timer is not running
+    # calculate letter grade based on score
+    grade = ("A+" if score >= 90 else "A" if score >= 80 else "B" if score >= 70 
+            else "C" if score >= 60 else "D" if score >= 50 else "F")
+
+    # ask the user if they want to restart the quiz
+    if messagebox.askyesno("Quiz Complete!", f"FINAL SCORE: {score}/100\nGRADE: {grade}\n\nPlay again?"): 
+        show_frame(menu_frame) # if they say yes → return to the main menu
+    else:
+        root.quit() # if they say no → close the program
 def show_frame(frame):
     """Switch to a different screen (menu, difficulty, or quiz)"""
     # stop all GIF animations
