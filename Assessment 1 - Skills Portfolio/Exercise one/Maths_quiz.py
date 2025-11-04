@@ -113,4 +113,11 @@ start_button.image = start_img
 start_button.bind("<Button-1>", lambda e: show_frame(diff_frame))
 start_button.place(relx=0.5, rely=0.59, anchor="center")
 
+# --- Quit button ---
+quit_img = ImageTk.PhotoImage(Image.open(QUIT_IMG_PATH).resize((280, 55), Image.LANCZOS))
+quit_button = tk.Label(menu_frame, image=quit_img, bg="black", cursor="hand2") # clickable label
+quit_button.image = quit_img
+quit_button.bind("<Button-1>", lambda e: root.quit()) # when clicked, exit application
+quit_button.place(relx=0.5, rely=0.75, anchor="center")
+
 root.mainloop()
