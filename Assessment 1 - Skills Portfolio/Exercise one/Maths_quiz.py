@@ -64,6 +64,25 @@ class GIFPlayer:
             self.label.after_cancel(self.job)
             self.job = None
 
+# === Quiz Logic Functions ===
+def show_frame(frame):
+    """Switch to a different screen (menu, difficulty, or quiz)"""
+    # stop all GIF animations
+    menu_gif.stop()
+    diff_gif.stop()
+    hallow_gif.stop()
+    jungle_gif.stop()
+    crimson_gif.stop()
+    
+    # show the requested frame
+    frame.tkraise()
+    
+    # start the GIF that belongs to the screen we are switching to
+    if frame == menu_frame:
+        menu_gif.play()
+    elif frame == diff_frame:
+        diff_gif.play()
+
 # === App ===
 # Create main window
 root = tk.Tk()
@@ -90,6 +109,8 @@ start_img = ImageTk.PhotoImage(Image.open(START_IMG_PATH).resize((280, 55), Imag
 start_button = tk.Label(menu_frame, image=start_img, bg="black", cursor="hand2") # create a label to act as a clickable Start button
 start_button.image = start_img
 
+# when clicked, switch to the difficulty selection frame
+start_button.bind("<Button-1>", lambda e: show_frame(diff_frame))
 start_button.place(relx=0.5, rely=0.59, anchor="center")
 
 root.mainloop()
