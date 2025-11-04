@@ -212,6 +212,10 @@ submit_btn = tk.Button(entry_frame, text="SUBMIT", font=("Comic Sans MS", 14, "b
                     cursor="hand2", padx=20, pady=12)
 submit_btn.pack(side=tk.LEFT, padx=10) # place the button next to the entry box
 
+# feedback label (shows correct/incorrect messages)
+feedback_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFFFFF")
+feedback_label.place(relx=0.5, y=425, anchor="center")
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
