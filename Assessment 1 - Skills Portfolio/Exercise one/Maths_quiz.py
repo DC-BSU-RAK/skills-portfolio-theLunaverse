@@ -150,6 +150,13 @@ for i, (text, y, diff) in enumerate([("Play", 147, "Easy"), ("Play", 250, "Moder
     btn.bind("<Button-1>", lambda e, d=diff: start_quiz_with_difficulty(d)) # start the quiz with chosen level when clicked
     btn.place(x=450, y=y)
 
+# Back button
+back_img = ImageTk.PhotoImage(Image.open(BACK_IMG_PATH).resize((280, 55), Image.LANCZOS))
+back_button = tk.Label(diff_frame, image=back_img, bg="black", cursor="hand2") # create a label that works like a clickable Back button
+back_button.image = back_img
+back_button.bind("<Button-1>", lambda e: show_frame(menu_frame))
+back_button.place(relx=0.5, rely=0.93, anchor="center")
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
