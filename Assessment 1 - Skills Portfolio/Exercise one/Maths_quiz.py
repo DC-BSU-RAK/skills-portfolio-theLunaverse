@@ -68,6 +68,15 @@ class GIFPlayer:
             self.job = None
 
 # === Quiz Logic Functions ===
+def start_quiz_with_difficulty(diff):
+    """Start a new quiz with chosen difficulty"""
+    global difficulty, score, question_count
+    difficulty = diff
+    score = 0 # reset score for new game
+    question_count = 0 # reset question counter
+    enable_inputs() # make sure inputs are active
+    show_frame(quiz_frame)
+    
 def show_frame(frame):
     """Switch to a different screen (menu, difficulty, or quiz)"""
     # stop all GIF animations
