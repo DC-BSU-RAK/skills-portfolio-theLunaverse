@@ -186,6 +186,10 @@ quiz_back_button.place(x=20, y=20)
 title_label = tk.Label(quiz_frame, font=("Comic Sans MS", 24, "bold"), fg="#FFD700", bg="#58386c")
 title_label.place(relx=0.5, y=80, anchor="center")
 
+# timer label
+timer_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#29356d", fg="#FFA500")
+timer_label.place(relx=0.5, y=192, anchor="center")
+
 # score label
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
