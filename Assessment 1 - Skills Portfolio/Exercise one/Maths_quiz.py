@@ -105,20 +105,41 @@ class QuizLogic:
         return user_answer == QuizLogic.calculate_correct_answer(num1, num2, op)
 
 
+# === Timer Functions ===
 def start_timer():
     """Start a 30-second countdown timer"""
+    Context.time_remaining = QUIZ_DURATION  # reset the timer to 30 seconds
+    update_timer()  # begin the countdown
 
 def update_timer():
     """Update timer display and check if time is up"""
+    if Context.time_remaining >= 0:
         # change color to red when 10 seconds or less remain
+        timer_label.config(
+            text=f"TIME: {Context.time_remaining}s",
+            fg="#FF0000" if Context.time_remaining <= 10 else "#FFA500"
+        )
+        Context.time_remaining -= 1
+        # update every second by calling the function after 1 second
+        Context.timer_id = root.after(1000, update_timer)
     else:
+        time_up()  # if timer hits 0, time-out
 
 def stop_timer():
+    """Stop the countdown timer"""
+    if Context.timer_id:
+        root.after_cancel(Context.timer_id)
+        Context.timer_id = None
 
 def time_up():
     """Handle when timer reaches zero"""
+    num1, num2, op = Context.current_question
+    correct = QuizLogic.calculate_correct_answer(num1, num2, op)
+    # shows 'time's up' and the correct answer
     feedback_label.config(text=f"TIME'S UP! ANSWER: {correct}", fg="red")
+    disable_inputs()
     root.after(2000, next_question)  # move to next question after 2 seconds
+
 
 def display_problem():
     """Generate and display a new math problem"""
