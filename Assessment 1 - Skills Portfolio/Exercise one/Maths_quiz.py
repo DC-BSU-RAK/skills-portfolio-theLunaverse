@@ -237,10 +237,25 @@ def next_question():
     else:
         display_results()
 
+
+# === Quiz Start/End Functions ===
 def start_quiz_with_difficulty(diff):
     """Start a new quiz with chosen difficulty"""
+    # reset all state for new game
+    Context.reset(diff)
     
+    # make sure inputs are active
+    enable_inputs()
     
+    # reset score display
+    score_label.config(text=f"SCORE: {Context.score}/{10 * TOTAL_QUESTIONS}")
+    
+    # switch to quiz screen
+    show_frame(quiz_frame)
+
+    # get or create the background for this difficulty and show it
+    QuizFrame.get_or_create(quiz_frame, diff).start()
+
     # bring all quiz elements to front using lift
     quiz_back_button.lift()
     title_label.lift()
@@ -249,17 +264,46 @@ def start_quiz_with_difficulty(diff):
     entry_frame.lift()
     feedback_label.lift()
     score_label.lift()
+
+    # show first question
     display_problem()
 
 def display_results():
     """Show final score and grade, ask to play again"""
+    stop_timer()  # make sure the timer is not running
+
+    # calculate final score
+    max_score = 10 * TOTAL_QUESTIONS
+    score = Context.score
+
     # calculate letter grade based on score
+    if score >= 90:
+        grade = "A+"
+    elif score >= 80:
+        grade = "A"
+    elif score >= 70:
+        grade = "B"
+    elif score >= 60:
+        grade = "C"
+    elif score >= 50:
+        grade = "D"
+    else:
+        grade = "F"
+
+    message = f"FINAL SCORE: {score}/{max_score}\nGRADE: {grade}\n\nPlay again?"
 
     # ask the user if they want to restart the quiz
+    if messagebox.askyesno("Quiz Complete!", message):
+        show_frame(menu_frame)  # if they say yes → return to the main menu
     else:
+        root.quit()  # if they say no → close the program
+
+
+# === Frame Switching Functions ===
 def show_frame(frame):
     """Switch to a different screen (menu, difficulty, or quiz)"""
     # stop all GIF animations
+    GIFPlayer.stop_all()
     
     # show the requested frame
     frame.tkraise()
@@ -269,6 +313,7 @@ def show_frame(frame):
         menu_gif.play()
     elif frame == diff_frame:
         diff_gif.play()
+
 
 # === App ===
 root = tk.Tk()
