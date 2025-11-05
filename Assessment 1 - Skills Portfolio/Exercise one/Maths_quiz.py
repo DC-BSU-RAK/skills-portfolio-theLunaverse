@@ -213,6 +213,8 @@ def check_answer():
     # update the score display at the top of the screen
     score_label.config(text=f"SCORE: {Context.score}/{10 * TOTAL_QUESTIONS}")
 
+
+# === Input Control Functions ===
 def disable_inputs():
     """Prevent user from entering answer (during feedback)"""
     answer_entry.config(state="disabled")
@@ -223,9 +225,13 @@ def enable_inputs():
     answer_entry.config(state="normal")
     submit_btn.config(state="normal")
 
+
+# === Question Navigation Functions ===
 def next_question():
     """Move to the next question or show results if quiz is complete"""
     stop_timer()
+    Context.question_count += 1
+    if Context.question_count < TOTAL_QUESTIONS:
         enable_inputs()
         display_problem()
     else:
