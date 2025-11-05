@@ -381,30 +381,52 @@ back_button.place(relx=0.5, rely=0.93, anchor="center")
 
 
 # === Quiz Frame ===
+
+# --- Back button (returns to diff menu) ---
+quiz_back_img = ImageTk.PhotoImage(Image.open(BACK_IMG_PATH).resize((150, 40), Image.LANCZOS))
+quiz_back_button = tk.Label(quiz_frame, image=quiz_back_img, bg="black", cursor="hand2")  # create a label that acts as a Back button in the quiz screen
+quiz_back_button.image = quiz_back_img  # keep a reference so the image doesn't disappear
+quiz_back_button.bind("<Button-1>", lambda e: (stop_timer(), show_frame(diff_frame)))  # stop timer when clicked and return to diff menu
 quiz_back_button.place(x=20, y=20)
 
+# --- Question number label ---
+title_label = tk.Label(quiz_frame, font=("Comic Sans MS", 24, "bold"), fg="#FFD700", bg=Difficulty.EASY.color)
 title_label.place(relx=0.5, y=80, anchor="center")
 
+# --- Timer label ---
 timer_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#29356d", fg="#FFA500")
 timer_label.place(relx=0.5, y=192, anchor="center")
 
+# --- Math question label ---
 question_label = tk.Label(quiz_frame, font=("Comic Sans MS", 20, "bold"), bg="#131f44", fg="#FFFFFF")
 question_label.place(relx=0.5, y=250, anchor="center")
 
+# --- Answer input area (container for entry box) ---
 entry_frame = tk.Frame(quiz_frame, bg="#17242c")
 entry_frame.place(relx=0.5, y=330, anchor="center")
 
+# --- Answer entry box ---
+answer_entry = tk.Entry(entry_frame, font=("Comic Sans MS", 20, "bold"), width=10,
+                        bg="#17242c", fg="#FFFFFF", insertbackground="#FFFFFF",
                         relief=tk.SOLID, bd=4, justify="center")
 answer_entry.pack(side=tk.LEFT, padx=10)
 answer_entry.bind('<Return>', lambda e: check_answer())  # allow Enter key to submit
 
+# --- Submit button ---
+submit_btn = tk.Button(entry_frame, text="SUBMIT", font=("Comic Sans MS", 14, "bold"),
+                    command=check_answer, bg="#131f44", fg="#FFFFFF",  # runs when the button is clicked
+                    activebackground="#303072", relief=tk.RAISED, bd=4,
                     cursor="hand2", padx=20, pady=12)
+submit_btn.pack(side=tk.LEFT, padx=10)  # place the button next to the entry box
 
+# --- Feedback label (shows correct/incorrect messages) ---
 feedback_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFFFFF")
 feedback_label.place(relx=0.5, y=425, anchor="center")
 
+# --- Score label ---
 score_label = tk.Label(quiz_frame, font=("Comic Sans MS", 16, "bold"), bg="#585e8d", fg="#FFD700")
 score_label.place(relx=0.5, y=455, anchor="center")
+
 
 # start the application on the menu screen
 show_frame(menu_frame)
