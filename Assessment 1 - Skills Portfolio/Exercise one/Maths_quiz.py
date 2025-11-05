@@ -357,15 +357,28 @@ quit_button.place(relx=0.5, rely=0.75, anchor="center")
 # === Difficulty Frame ===
 # create the label that holds the background GIF
 diff_bg = tk.Label(diff_frame)
+diff_bg.pack(fill="both", expand=True)  # fill entire menu screen
 diff_gif = GIFPlayer(diff_bg, DIFF_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
 
+# create three difficulty buttons (Easy, Moderate, Advanced)
+for i, (text, y, diff) in enumerate([
+    ("Play", 147, Difficulty.EASY),
+    ("Play", 250, Difficulty.MEDIUM),
+    ("Play", 352, Difficulty.HARD)
+]):
     # create a label that acts like a button
+    btn = tk.Label(diff_frame, text=text, font=("Comic Sans MS", 14, "bold"),
                 bg="#374a82", fg="white", cursor="hand2", padx=20, pady=8, relief=tk.RAISED, bd=2)
+    btn.bind("<Button-1>", lambda e, d=diff: start_quiz_with_difficulty(d))  # start the quiz with chosen level when clicked
     btn.place(x=450, y=y)
 
+# --- Back button ---
 back_img = ImageTk.PhotoImage(Image.open(BACK_IMG_PATH).resize((280, 55), Image.LANCZOS))
+back_button = tk.Label(diff_frame, image=back_img, bg="black", cursor="hand2")  # create a label that works like a clickable Back button
+back_button.image = back_img  # keep a reference so the image doesn't disappear
 back_button.bind("<Button-1>", lambda e: show_frame(menu_frame))
 back_button.place(relx=0.5, rely=0.93, anchor="center")
+
 
 # === Quiz Frame ===
 quiz_back_button.place(x=20, y=20)
