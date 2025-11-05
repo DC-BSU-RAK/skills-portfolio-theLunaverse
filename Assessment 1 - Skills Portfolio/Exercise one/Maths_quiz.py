@@ -316,6 +316,7 @@ def show_frame(frame):
 
 
 # === App ===
+# create main window
 root = tk.Tk()
 root.title("Maths Quiz")
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
@@ -329,13 +330,17 @@ quiz_frame = tk.Frame(root, bg="black")
 for f in (menu_frame, diff_frame, quiz_frame):
     f.place(relwidth=1, relheight=1)
 
+
 # === Menu Frame ===
 # create a label to hold background GIF
 menu_bg = tk.Label(menu_frame)
+menu_bg.pack(fill="both", expand=True)  # make it fill the whole menu area
 menu_gif = GIFPlayer(menu_bg, MENU_GIF_PATH, WINDOW_WIDTH, WINDOW_HEIGHT)
 
 # --- Start button ---
 start_img = ImageTk.PhotoImage(Image.open(START_IMG_PATH).resize((280, 55), Image.LANCZOS))
+start_button = tk.Label(menu_frame, image=start_img, bg="black", cursor="hand2")  # create a label to act as a clickable Start button
+start_button.image = start_img  # keep a reference so the image doesn't disappear
 
 # when clicked, switch to the difficulty selection frame
 start_button.bind("<Button-1>", lambda e: show_frame(diff_frame))
@@ -343,7 +348,11 @@ start_button.place(relx=0.5, rely=0.59, anchor="center")
 
 # --- Quit button ---
 quit_img = ImageTk.PhotoImage(Image.open(QUIT_IMG_PATH).resize((280, 55), Image.LANCZOS))
+quit_button = tk.Label(menu_frame, image=quit_img, bg="black", cursor="hand2")  # clickable label
+quit_button.image = quit_img  # keep a reference so the image doesn't disappear
+quit_button.bind("<Button-1>", lambda e: root.quit())  # when clicked, exit application
 quit_button.place(relx=0.5, rely=0.75, anchor="center")
+
 
 # === Difficulty Frame ===
 # create the label that holds the background GIF
