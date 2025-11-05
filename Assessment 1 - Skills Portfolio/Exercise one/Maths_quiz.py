@@ -1,6 +1,71 @@
 import tkinter as tk
 from tkinter import messagebox
+from PIL import Image, ImageTk
 import random
+from enum import Enum
+
+from modules.gif import GIFPlayer, QuizFrame
+from modules.constants import *
+
+# === Difficulty Levels ===
+class Difficulty(Enum):
+    """Stores all difficulty settings in one place"""
+    # format: (level, color, background_path, min_number, max_number)
+    EASY = (0, "#58386c", HALLOW_GIF_PATH, 0, 9)  # single digit numbers
+    MEDIUM = (1, "#2596be", JUNGLE_GIF_PATH, 10, 99)  # two digit numbers
+    HARD = (2, "#896c57", CRIMSON_GIF_PATH, 1000, 9999)  # four digit numbers
+
+    @property
+    def level(self):
+        """Get the difficulty level number"""
+        return self.value[0]
+
+    @property
+    def color(self):
+        """Get the background color for this difficulty"""
+        return self.value[1]
+
+    @property
+    def path(self):
+        """Get the GIF path for this difficulty"""
+        return self.value[2]
+
+    @property
+    def min_val(self):
+        """Get minimum number for this difficulty"""
+        return self.value[3]
+
+    @property
+    def max_val(self):
+        """Get maximum number for this difficulty"""
+        return self.value[4]
+
+
+# === Quiz State Management ===
+class QuizContext:
+    """Track quiz state throughout the application"""
+    def __init__(self):
+        self.difficulty = Difficulty.EASY  # current difficulty level
+        self.score = 0  # current score (out of 100)
+        self.question_count = 0  # number of questions answered
+        self.current_question = None  # stores (num1, num2, operation)
+        self.attempts = 0  # number of attempts on current question
+        self.time_remaining = QUIZ_DURATION  # seconds remaining for current question
+        self.timer_id = None  # reference to timer for cancellation
+
+    def reset(self, new_difficulty=Difficulty.EASY):
+        """Reset quiz state for a new game"""
+        self.difficulty = new_difficulty
+        self.score = 0
+        self.question_count = 0
+        self.current_question = None
+        self.attempts = 0
+        self.time_remaining = QUIZ_DURATION
+
+
+# create single context instance to hold all state
+Context = QuizContext()
+
 
 # === Quiz Logic Functions ===
 
