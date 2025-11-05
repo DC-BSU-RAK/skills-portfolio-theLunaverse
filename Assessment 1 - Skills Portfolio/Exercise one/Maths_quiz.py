@@ -141,12 +141,34 @@ def time_up():
     root.after(2000, next_question)  # move to next question after 2 seconds
 
 
+# === Question Display Functions ===
 def display_problem():
     """Generate and display a new math problem"""
+    # generate a new problem based on current difficulty
+    num1, num2, op = QuizLogic.generate_problem(Context.difficulty)
+
+    # save the current question (numbers and operation)
+    Context.current_question = (num1, num2, op)
     
+    # update the question number at the top
+    title_label.config(text=f"QUESTION {Context.question_count + 1}/{TOTAL_QUESTIONS}")
     
+    # show the math problem
     question_label.config(text=f"{num1} {op} {num2} = ?")
+    
+    # clear any old feedback
     feedback_label.config(text="")
+    
+    # clear the answer box from any old answer
+    answer_entry.delete(0, "end")
+    
+    # put cursor in answer box
+    answer_entry.focus_set()
+    
+    # reset attempts counter
+    Context.attempts = 0
+    
+    # start the countdown
     start_timer()
 
 
