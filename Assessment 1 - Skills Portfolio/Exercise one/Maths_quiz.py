@@ -68,6 +68,41 @@ Context = QuizContext()
 
 
 # === Quiz Logic Functions ===
+class QuizLogic:
+    """Contains all the math quiz logic (separated from UI)"""
+    
+    @staticmethod
+    def random_int(difficulty: Difficulty):
+        """Generate a random number based on difficulty level"""
+        return random.randint(difficulty.min_val, difficulty.max_val)
+
+    @staticmethod
+    def decide_operation():
+        """Randomly choose addition or subtraction"""
+        return random.choice(['+', '-'])
+
+    @staticmethod
+    def generate_problem(difficulty: Difficulty):
+        """Generate a new math problem with two numbers and an operation"""
+        num1 = QuizLogic.random_int(difficulty)
+        num2 = QuizLogic.random_int(difficulty)
+        op = QuizLogic.decide_operation()
+
+        # for subtraction, ensure result is positive (except in Hard mode)
+        if op == '-' and num1 < num2 and difficulty != Difficulty.HARD:
+            num1, num2 = num2, num1
+
+        return num1, num2, op
+
+    @staticmethod
+    def calculate_correct_answer(num1, num2, op):
+        """Calculate the correct answer for a problem"""
+        return num1 + num2 if op == '+' else num1 - num2
+
+    @staticmethod
+    def check_answer(num1, num2, op, user_answer):
+        """Check if the given answer is correct"""
+        return user_answer == QuizLogic.calculate_correct_answer(num1, num2, op)
 
 
 def start_timer():
