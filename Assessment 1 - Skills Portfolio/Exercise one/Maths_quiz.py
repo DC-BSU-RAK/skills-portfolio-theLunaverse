@@ -172,28 +172,46 @@ def display_problem():
     start_timer()
 
 
+# === Answer Checking Functions ===
 def check_answer():
     """Validate and score the user's answer"""
+    stop_timer()  # pause timer while checking the answer
     
     # validate input is a number
     try:
         user_answer = int(answer_entry.get())
     except ValueError:
         feedback_label.config(text="ENTER A VALID NUMBER!", fg="red")
+        update_timer()  # restart timer because this wasn't a real attempt
         return
 
+    num1, num2, op = Context.current_question
+
+    # check if the answer is correct
+    if QuizLogic.check_answer(num1, num2, op, user_answer):
         # award points: 10 for first try, 5 for second try
+        points = 10 if Context.attempts == 0 else 5
+        Context.score += points
         feedback_label.config(text=f"CORRECT! +{points} POINTS", fg="light green")
+        disable_inputs()  # stop further typing
+        root.after(1500, next_question)  # show next question after 1.5 seconds
     else:
+        # if the answer is wrong
+        Context.attempts += 1
+        if Context.attempts < 2:
             # give user a second chance
             feedback_label.config(text="INCORRECT! TRY AGAIN!", fg="#FF4500")
             answer_entry.delete(0, "end")
             start_timer()
         else:
             # show correct answer after 2 failed attempts
+            correct = QuizLogic.calculate_correct_answer(num1, num2, op)
             feedback_label.config(text=f"INCORRECT! ANSWER: {correct}", fg="orange")
             disable_inputs()
+            root.after(2000, next_question)  # move on after 2 seconds
+
     # update the score display at the top of the screen
+    score_label.config(text=f"SCORE: {Context.score}/{10 * TOTAL_QUESTIONS}")
 
 def disable_inputs():
     """Prevent user from entering answer (during feedback)"""
