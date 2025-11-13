@@ -28,4 +28,8 @@ class SansJokeApp:
         # === fonts ===
         self.dialogue_font = tkfont.Font(family=FONT_FAMILY, size=DIALOGUE_FONT_SIZE)
         self.sans_font = tkfont.Font(family=FONT_FAMILY, size=SANS_COMMENT_FONT_SIZE)
+        
+        # preload all images before creating window
+        self.load_images()
+        
 root.mainloop()
