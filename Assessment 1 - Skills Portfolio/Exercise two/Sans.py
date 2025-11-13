@@ -6,3 +6,6 @@ import pygame
 from modules.gif import GIFPlayer
 from modules.constants import *
 
+root = tk.Tk()
+
+root.mainloop()
