@@ -25,4 +25,7 @@ class SansJokeApp:
         self.is_music_playing = True  # tracks mute state
         self.button_enabled = {'punchline': False, 'next': False}  # track which buttons are clickable
         
+        # === fonts ===
+        self.dialogue_font = tkfont.Font(family=FONT_FAMILY, size=DIALOGUE_FONT_SIZE)
+        self.sans_font = tkfont.Font(family=FONT_FAMILY, size=SANS_COMMENT_FONT_SIZE)
 root.mainloop()
