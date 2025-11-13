@@ -59,4 +59,10 @@ class SansJokeApp:
         )
         self.label_dialogue.place(x=DIALOGUE_X + INITIAL_TEXT_X_OFFSET, y=DIALOGUE_Y + DIALOGUE_TEXT_Y_OFFSET, width=DIALOGUE_WIDTH, height=DIALOGUE_TEXT_HEIGHT)
         
+        # === buttons ===
+        # tell joke button 
+        self.btn_tell = tk.Label(self.canvas, image=self.img_tell, bg=BG_COLOR, cursor="hand2")
+        self.btn_tell.place(x=TELL_JOKE_BTN_X, y=BUTTON_Y, width=TELL_JOKE_WIDTH, height=TELL_JOKE_HEIGHT)
+        self.btn_tell.bind("<Button-1>", lambda e: self.tell_joke())
+        
 root.mainloop()
