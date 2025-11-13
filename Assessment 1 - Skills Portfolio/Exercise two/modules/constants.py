@@ -8,6 +8,12 @@ JOKES_FILE_PATH = os.path.join(BASE_DIR, "media", "randomJokes.txt")
 WINDOW_WIDTH = 960
 WINDOW_HEIGHT = 540
 WINDOW_TITLE = "sans. - Joke Teller"
+# === dialogue Box ===
+DIALOGUE_X = 160
+DIALOGUE_Y = 125
+DIALOGUE_WIDTH = 700
+DIALOGUE_HEIGHT = 160
+
 # === sans's comment box ===
 SANS_COMMENT_X = 655
 SANS_COMMENT_Y = 51
