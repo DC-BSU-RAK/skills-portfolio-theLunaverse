@@ -51,4 +51,12 @@ class SansJokeApp:
             spacing2=SANS_COMMENT_SPACING, spacing3=5, state="disabled", cursor="arrow"
         )
         self.text_sans.place(x=SANS_COMMENT_X, y=SANS_COMMENT_Y, width=SANS_COMMENT_WIDTH, height=SANS_COMMENT_HEIGHT)
+        
+        # main dialogue box displays both narrator text and jokes
+        self.label_dialogue = tk.Label(
+            self.canvas, text="", font=self.dialogue_font, bg=BG_COLOR, fg="#FFFFFF",
+            wraplength=DIALOGUE_WIDTH, justify="left", anchor="nw"
+        )
+        self.label_dialogue.place(x=DIALOGUE_X + INITIAL_TEXT_X_OFFSET, y=DIALOGUE_Y + DIALOGUE_TEXT_Y_OFFSET, width=DIALOGUE_WIDTH, height=DIALOGUE_TEXT_HEIGHT)
+        
 root.mainloop()
