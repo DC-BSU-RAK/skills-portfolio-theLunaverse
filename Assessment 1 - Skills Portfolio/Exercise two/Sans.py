@@ -32,4 +32,15 @@ class SansJokeApp:
         # preload all images before creating window
         self.load_images()
         
+        # === canvas and background ===
+        self.canvas = tk.Canvas(root, width=WINDOW_WIDTH, height=WINDOW_HEIGHT, bg=BG_COLOR, highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        
+        # background label holds the GIFs
+        self.label_bg = tk.Label(self.canvas, bg=BG_COLOR)
+        self.label_bg.place(x=0, y=0, width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
+        
+        # load all GIF animations
+        self.load_gifs()
+        
 root.mainloop()
