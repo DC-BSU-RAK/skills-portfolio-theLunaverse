@@ -43,4 +43,12 @@ class SansJokeApp:
         # load all GIF animations
         self.load_gifs()
         
+        # === text boxes ===
+        # sans comment box appears on startup 
+        self.text_sans = tk.Text(
+            self.canvas, font=self.sans_font, bg="#FFFFFF", fg="#000000", wrap="word",
+            relief="flat", highlightthickness=0, padx=10, pady=10, spacing1=5,
+            spacing2=SANS_COMMENT_SPACING, spacing3=5, state="disabled", cursor="arrow"
+        )
+        self.text_sans.place(x=SANS_COMMENT_X, y=SANS_COMMENT_Y, width=SANS_COMMENT_WIDTH, height=SANS_COMMENT_HEIGHT)
 root.mainloop()
