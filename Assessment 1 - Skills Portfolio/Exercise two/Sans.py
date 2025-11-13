@@ -4,4 +4,5 @@ from PIL import Image, ImageTk
 import random
 import pygame
 from modules.gif import GIFPlayer
+from modules.constants import *
 
