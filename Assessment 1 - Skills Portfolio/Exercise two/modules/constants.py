@@ -4,6 +4,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 JOKES_FILE_PATH = os.path.join(BASE_DIR, "media", "randomJokes.txt")
 
+# button Images
+TELL_JOKE_IMG = os.path.join(BASE_DIR, "media", "tell_joke.png")
+PUNCHLINE_IMG = os.path.join(BASE_DIR, "media", "punchline.png")
+NEXT_JOKE_IMG = os.path.join(BASE_DIR, "media", "next_joke.png")
+QUIT_IMG = os.path.join(BASE_DIR, "media", "quit.png")
+
 # === window Settings ===
 WINDOW_WIDTH = 960
 WINDOW_HEIGHT = 540
