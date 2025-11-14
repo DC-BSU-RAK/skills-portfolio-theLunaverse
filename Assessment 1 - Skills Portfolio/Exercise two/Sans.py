@@ -97,4 +97,11 @@ class SansJokeApp:
         GIFPlayer.stop_all()
         gif.play()
 
+    # === typewriter text effects ===
+    def start_typing(self):
+        """start both Sans comment and initial dialogue animations simultaneously"""
+        # Sans comment with sound effects
+        self.type_sans(SANS_COMMENT)
+        # initial dialogue is narrator (no sound effects)
+        self.type_dialogue(INITIAL_DIALOGUE_MESSAGE, sans_speaking=False)
 root.mainloop()
