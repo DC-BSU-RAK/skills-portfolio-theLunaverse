@@ -205,6 +205,20 @@ class SansJokeApp:
         # allow user interaction
         self.is_typing = False
     
+    # === getting the jokes ===
+    def load_jokes(self):
+        """load all jokes from the jokes file"""
+        jokes = []
+        with open(JOKES_FILE_PATH, 'r', encoding='utf-8') as file:
+            for line in file:
+                line = line.strip()
+                # split setup and punchline by the question mark
+                parts = line.split('?', 1)
+                setup = parts[0].strip() + '?'  # keep question mark with setup
+                punchline = parts[1].strip()
+                jokes.append({'setup': setup, 'punchline': punchline})
+        return jokes
+    
     # === music ===
     def play_music(self):
         """start background music on loop"""
