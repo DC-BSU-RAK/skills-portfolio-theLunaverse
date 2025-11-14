@@ -148,6 +148,27 @@ class SansJokeApp:
         self.type_sans(SANS_COMMENT)
         # initial dialogue is narrator (no sound effects)
         self.type_dialogue(INITIAL_DIALOGUE_MESSAGE, sans_speaking=False)
+    
+    def type_sans(self, text, index=0):
+        """animate Sans comment box character by character with sound"""
+        if index <= len(text):
+            # update text box with next character
+            self.text_sans.config(state="normal")
+            self.text_sans.delete("1.0", "end")
+            self.text_sans.insert("1.0", text[:index])
+            self.text_sans.config(state="disabled")
+            
+            # play talking sound for each letter if music is enabled
+            # skip spaces to avoid extra sounds
+            if self.is_music_playing and index > 0 and text[index - 1] != ' ':
+                try:
+                    pygame.mixer.Sound(LETTER_SOUND_PATH).play()
+                except:
+                    pass  # continue if sound fails to play
+            
+            # schedule next character after delay using animation_comment to store the scheduled task
+            self.animation_comment = self.root.after(TYPEWRITER_SPEED, self.type_sans, text, index + 1)
+    
     # === music ===
     def play_music(self):
         """start background music on loop"""
