@@ -115,6 +115,12 @@ class SansJokeApp:
         # grayscale version indicates button is disabled
         self.img_tell_gray = ImageTk.PhotoImage(img.convert('L').convert('RGB'))
         
+        # punchline button images
+        img = Image.open(PUNCHLINE_IMG)
+        img = img.resize((PUNCHLINE_WIDTH, PUNCHLINE_HEIGHT), Image.LANCZOS)
+        self.img_punchline = ImageTk.PhotoImage(img)
+        self.img_punchline_gray = ImageTk.PhotoImage(img.convert('L').convert('RGB'))
+        
     # === typewriter text effects ===
     def start_typing(self):
         """start both Sans comment and initial dialogue animations simultaneously"""
