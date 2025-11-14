@@ -335,4 +335,15 @@ class SansJokeApp:
             # start new joke cycle
             self.tell_joke()
     
+    # === app quit ===
+    def quit(self):
+        """clean up and close the application"""
+        # stop typing animations
+        self.stop_typing()
+        # stop music
+        pygame.mixer.music.stop()
+        # stop all GIF animations
+        GIFPlayer.stop_all()
+        # close window
+        self.root.quit()
 root.mainloop()
