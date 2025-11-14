@@ -276,4 +276,32 @@ class SansJokeApp:
             # show unmute icon to indicate music is on
             self.btn_mute.config(image=self.img_mute)
     
+    # === joke flow ===
+    def tell_joke(self):
+        """display joke setup and prepare for punchline"""
+        # only allow new joke if not currently typing
+        if not self.is_typing:
+            # hide Sans comment box 
+            self.text_sans.place_forget()
+            # switch to setup GIF animation
+            self.play_gif(self.gif_setup)
+            
+            # reposition dialogue box for better joke display
+            self.label_dialogue.place(x=DIALOGUE_X + DIALOGUE_TEXT_X_OFFSET, y=DIALOGUE_Y + DIALOGUE_TEXT_Y_OFFSET, width=DIALOGUE_WIDTH - 40, height=DIALOGUE_TEXT_HEIGHT)
+            self.label_dialogue.config(fg="#FFFFFF", bg=BG_COLOR, wraplength=DIALOGUE_WIDTH - 60)
+            
+            # randomly select a joke from loaded jokes
+            self.current_joke = random.choice(self.jokes)
+            
+            # stop any previous animation
+            self.stop_typing()
+            self.is_typing = True
+            # type setup with Sans speaking sounds, callback when done
+            self.type_dialogue(self.current_joke['setup'], callback=self.on_setup_done, sans_speaking=True)
+            
+            # update button states - disable setup, enable next
+            self.set_button(self.btn_punchline, False)
+            self.set_button(self.btn_next, True)
+            self.set_button(self.btn_tell, False)
+    
 root.mainloop()
