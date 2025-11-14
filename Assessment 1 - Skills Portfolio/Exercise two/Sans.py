@@ -261,4 +261,19 @@ class SansJokeApp:
         # show unmute icon to indicate music is playing
         self.btn_mute.config(image=self.img_mute)
     
+    def toggle_music(self):
+        """pause or resume music and update button visual"""
+        if self.is_music_playing:
+            # music is playing, so pause it
+            pygame.mixer.music.pause()
+            self.is_music_playing = False
+            # show mute icon to indicate music is off
+            self.btn_mute.config(image=self.img_unmute)
+        else:
+            # music is paused, so resume it
+            pygame.mixer.music.unpause()
+            self.is_music_playing = True
+            # show unmute icon to indicate music is on
+            self.btn_mute.config(image=self.img_mute)
+    
 root.mainloop()
