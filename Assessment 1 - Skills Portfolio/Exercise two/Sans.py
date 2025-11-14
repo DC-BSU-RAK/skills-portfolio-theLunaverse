@@ -219,6 +219,38 @@ class SansJokeApp:
                 jokes.append({'setup': setup, 'punchline': punchline})
         return jokes
     
+    # === buttons ===
+    def set_button(self, button, enabled):
+        """enable or disable a button and update its visual state"""
+        if button == self.btn_punchline:
+            # track if punchline button is clickable
+            self.button_enabled['punchline'] = enabled
+            if enabled:
+                # show colored image and bind click handler
+                button.config(image=self.img_punchline)
+                button.bind("<Button-1>", lambda e: self.show_punchline())
+            else:
+                # show grayscale image and remove click handler
+                button.config(image=self.img_punchline_gray)
+                button.unbind("<Button-1>")
+        elif button == self.btn_next:
+            # track if next button is clickable
+            self.button_enabled['next'] = enabled
+            if enabled:
+                button.config(image=self.img_next)
+                button.bind("<Button-1>", lambda e: self.next_joke())
+            else:
+                button.config(image=self.img_next_gray)
+                button.unbind("<Button-1>")
+        elif button == self.btn_tell:
+            # tell joke button is always clickable when not typing
+            if enabled:
+                button.config(image=self.img_tell)
+                button.bind("<Button-1>", lambda e: self.tell_joke())
+            else:
+                button.config(image=self.img_tell_gray)
+                button.unbind("<Button-1>")
+    
     # === music ===
     def play_music(self):
         """start background music on loop"""
