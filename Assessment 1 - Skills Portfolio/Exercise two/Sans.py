@@ -7,6 +7,7 @@ from modules.gif import GIFPlayer
 from modules.constants import *
 
 root = tk.Tk()
+pygame.mixer.init()
 
 class SansJokeApp:
     def __init__(self, root):
