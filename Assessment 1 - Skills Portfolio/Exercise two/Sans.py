@@ -83,6 +83,13 @@ class SansJokeApp:
         self.btn_mute.place(x=MUTE_BTN_X, y=MUTE_BTN_Y, width=MUTE_WIDTH, height=MUTE_HEIGHT)
         self.btn_mute.bind("<Button-1>", lambda e: self.toggle_music())
         
+        # === startup ===
+        # show idle animation and start typewriter style text
+        self.play_gif(self.gif_idle)
+        self.is_typing = True
+        self.play_music()
+        self.start_typing()
+
     # === gif management ===
     def load_gifs(self):
         """load all GIFs into memory at startup"""
