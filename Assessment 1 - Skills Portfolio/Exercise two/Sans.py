@@ -69,4 +69,8 @@ class SansJokeApp:
         self.btn_punchline = tk.Label(self.canvas, image=self.img_punchline_gray, bg=BG_COLOR, cursor="hand2")
         self.btn_punchline.place(x=SHOW_PUNCHLINE_BTN_X, y=BUTTON_Y, width=PUNCHLINE_WIDTH, height=PUNCHLINE_HEIGHT)
         
+        # next joke button - only enabled after punchline is shown
+        self.btn_next = tk.Label(self.canvas, image=self.img_next_gray, bg=BG_COLOR, cursor="hand2")
+        self.btn_next.place(x=NEXT_JOKE_BTN_X, y=BUTTON_Y, width=NEXT_JOKE_WIDTH, height=NEXT_JOKE_HEIGHT)
+        
 root.mainloop()
