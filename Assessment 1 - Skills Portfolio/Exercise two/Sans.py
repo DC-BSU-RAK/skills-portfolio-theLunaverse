@@ -91,4 +91,10 @@ class SansJokeApp:
         self.gif_setup = GIFPlayer(self.label_bg, SETUP_GIF, WINDOW_WIDTH, WINDOW_HEIGHT)
         self.gif_punch = GIFPlayer(self.label_bg, PUNCH_GIF, WINDOW_WIDTH, WINDOW_HEIGHT)
 
+    def play_gif(self, gif):
+        """stop all GIFs and play the specified one"""
+        # ensures only one animation plays at a time
+        GIFPlayer.stop_all()
+        gif.play()
+
 root.mainloop()
