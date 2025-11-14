@@ -14,6 +14,14 @@ QUIT_IMG = os.path.join(BASE_DIR, "media", "quit.png")
 WINDOW_WIDTH = 960
 WINDOW_HEIGHT = 540
 WINDOW_TITLE = "sans. - Joke Teller"
+# mute button
+MUTE_IMG = os.path.join(BASE_DIR, "media", "mute.png")
+UNMUTE_IMG = os.path.join(BASE_DIR, "media", "unmute.png")
+MUTE_WIDTH = 40
+MUTE_HEIGHT = 40
+MUTE_BTN_X = 20
+MUTE_BTN_Y = 20
+
 # === dialogue Box ===
 DIALOGUE_X = 160
 DIALOGUE_Y = 125
