@@ -192,6 +192,19 @@ class SansJokeApp:
             if callback:
                 callback()
     
+    def stop_typing(self):
+        """cancel all active typewriter animations and reset state"""
+        # cancel scheduled dialogue animation
+        if self.animation_text: 
+            self.root.after_cancel(self.animation_text)
+            self.animation_text = None
+        # cancel scheduled Sans comment animation
+        if self.animation_comment: 
+            self.root.after_cancel(self.animation_comment)
+            self.animation_comment = None
+        # allow user interaction
+        self.is_typing = False
+    
     # === music ===
     def play_music(self):
         """start background music on loop"""
