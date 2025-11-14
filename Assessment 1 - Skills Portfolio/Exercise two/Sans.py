@@ -73,4 +73,9 @@ class SansJokeApp:
         self.btn_next = tk.Label(self.canvas, image=self.img_next_gray, bg=BG_COLOR, cursor="hand2")
         self.btn_next.place(x=NEXT_JOKE_BTN_X, y=BUTTON_Y, width=NEXT_JOKE_WIDTH, height=NEXT_JOKE_HEIGHT)
         
+        # quit button - always enabled
+        self.btn_quit = tk.Label(self.canvas, image=self.img_quit, bg=BG_COLOR, cursor="hand2")
+        self.btn_quit.place(x=QUIT_BTN_X, y=BUTTON_Y, width=QUIT_WIDTH, height=QUIT_HEIGHT)
+        self.btn_quit.bind("<Button-1>", lambda e: self.quit())
+        
 root.mainloop()
