@@ -132,6 +132,11 @@ class SansJokeApp:
         img = img.resize((QUIT_WIDTH, QUIT_HEIGHT), Image.LANCZOS)
         self.img_quit = ImageTk.PhotoImage(img)
         
+        # mute button has two states - one for music on, one for music off
+        img = Image.open(UNMUTE_IMG)
+        img = img.resize((MUTE_WIDTH, MUTE_HEIGHT), Image.LANCZOS)
+        self.img_mute = ImageTk.PhotoImage(img)  # shows when music is playing
+        
     # === typewriter text effects ===
     def start_typing(self):
         """start both Sans comment and initial dialogue animations simultaneously"""
