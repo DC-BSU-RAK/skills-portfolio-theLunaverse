@@ -19,6 +19,10 @@ QUIT_IMG = os.path.join(BASE_DIR, "media", "quit.png")
 WINDOW_WIDTH = 960
 WINDOW_HEIGHT = 540
 WINDOW_TITLE = "sans. - Joke Teller"
+
+# music
+MUSIC_PATH = os.path.join(BASE_DIR, "media", "sans..mp3")
+
 # mute button
 MUTE_IMG = os.path.join(BASE_DIR, "media", "mute.png")
 UNMUTE_IMG = os.path.join(BASE_DIR, "media", "unmute.png")
