@@ -65,4 +65,8 @@ class SansJokeApp:
         self.btn_tell.place(x=TELL_JOKE_BTN_X, y=BUTTON_Y, width=TELL_JOKE_WIDTH, height=TELL_JOKE_HEIGHT)
         self.btn_tell.bind("<Button-1>", lambda e: self.tell_joke())
         
+        # punchline button - disabled until setup finishes
+        self.btn_punchline = tk.Label(self.canvas, image=self.img_punchline_gray, bg=BG_COLOR, cursor="hand2")
+        self.btn_punchline.place(x=SHOW_PUNCHLINE_BTN_X, y=BUTTON_Y, width=PUNCHLINE_WIDTH, height=PUNCHLINE_HEIGHT)
+        
 root.mainloop()
