@@ -44,4 +44,6 @@ SANS_COMMENT_SPACING = 10
 FONT_FAMILY = "Comic Sans MS"
 DIALOGUE_FONT_SIZE = 30
 SANS_COMMENT_FONT_SIZE = 19
+# === text content ===
+INITIAL_DIALOGUE_MESSAGE = "Sans looks like he's about to tell you a joke"
 SANS_COMMENT = 'You really should press that \n"tell me a joke" button, y\'know?'
