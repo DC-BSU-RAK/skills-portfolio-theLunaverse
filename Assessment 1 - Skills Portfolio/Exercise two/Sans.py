@@ -105,6 +105,16 @@ class SansJokeApp:
         GIFPlayer.stop_all()
         gif.play()
 
+    # === image management ===
+    def load_images(self):
+        """load and resize all button images"""
+        # tell joke button with enabled and disabled states
+        img = Image.open(TELL_JOKE_IMG)
+        img = img.resize((TELL_JOKE_WIDTH, TELL_JOKE_HEIGHT), Image.LANCZOS)
+        self.img_tell = ImageTk.PhotoImage(img)
+        # grayscale version indicates button is disabled
+        self.img_tell_gray = ImageTk.PhotoImage(img.convert('L').convert('RGB'))
+        
     # === typewriter text effects ===
     def start_typing(self):
         """start both Sans comment and initial dialogue animations simultaneously"""
