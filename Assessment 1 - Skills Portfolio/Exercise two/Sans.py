@@ -3,6 +3,7 @@ from tkinter import font as tkfont
 from PIL import Image, ImageTk
 import random
 import pygame
+import platform
 from modules.gif import GIFPlayer
 from modules.constants import *
 
@@ -27,8 +28,16 @@ class SansJokeApp:
         self.button_enabled = {'punchline': False, 'next': False}  # track which buttons are clickable
         
         # === fonts ===
-        self.dialogue_font = tkfont.Font(family=FONT_FAMILY, size=DIALOGUE_FONT_SIZE)
-        self.sans_font = tkfont.Font(family=FONT_FAMILY, size=SANS_COMMENT_FONT_SIZE)
+        # detect operating system and use appropriate font sizes
+        if platform.system() == "Windows":
+            dialogue_size = 25
+            sans_size = 14
+        else:  # macOS and Linux
+            dialogue_size = 30
+            sans_size = 18
+        
+        self.dialogue_font = tkfont.Font(family=FONT_FAMILY, size=dialogue_size)
+        self.sans_font = tkfont.Font(family=FONT_FAMILY, size=sans_size)
         
         # preload all images before creating window
         self.load_images()
