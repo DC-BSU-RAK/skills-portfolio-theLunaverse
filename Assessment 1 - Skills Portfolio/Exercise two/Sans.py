@@ -304,4 +304,9 @@ class SansJokeApp:
             self.set_button(self.btn_next, True)
             self.set_button(self.btn_tell, False)
     
+    def on_setup_done(self):
+        """called when setup typewriter finishes - enable punchline button"""
+        # user can now click to see punchline
+        self.set_button(self.btn_punchline, True)
+    
 root.mainloop()
