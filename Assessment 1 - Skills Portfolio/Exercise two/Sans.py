@@ -83,4 +83,12 @@ class SansJokeApp:
         self.btn_mute.place(x=MUTE_BTN_X, y=MUTE_BTN_Y, width=MUTE_WIDTH, height=MUTE_HEIGHT)
         self.btn_mute.bind("<Button-1>", lambda e: self.toggle_music())
         
+    # === gif management ===
+    def load_gifs(self):
+        """load all GIFs into memory at startup"""
+        # each GIF is preloaded so transitions are smooth
+        self.gif_idle = GIFPlayer(self.label_bg, IDLE_GIF, WINDOW_WIDTH, WINDOW_HEIGHT)
+        self.gif_setup = GIFPlayer(self.label_bg, SETUP_GIF, WINDOW_WIDTH, WINDOW_HEIGHT)
+        self.gif_punch = GIFPlayer(self.label_bg, PUNCH_GIF, WINDOW_WIDTH, WINDOW_HEIGHT)
+
 root.mainloop()
