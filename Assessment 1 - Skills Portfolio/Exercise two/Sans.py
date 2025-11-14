@@ -169,6 +169,29 @@ class SansJokeApp:
             # schedule next character after delay using animation_comment to store the scheduled task
             self.animation_comment = self.root.after(TYPEWRITER_SPEED, self.type_sans, text, index + 1)
     
+    def type_dialogue(self, text, index=0, callback=None, sans_speaking=False):
+        """animate dialogue box character by character"""
+        if index <= len(text):
+            # update dialogue with next character
+            self.label_dialogue.config(text=text[:index])
+            
+            # only play sound if Sans is speaking (not narrator)
+            # skip punctuation to avoid sound effects on punctuation marks
+            if sans_speaking and self.is_music_playing and index > 0 and text[index - 1] not in ' .,!?':
+                try:
+                    pygame.mixer.Sound(LETTER_SOUND_PATH).play()
+                except:
+                    pass  # continue if sound fails to play
+            
+            # schedule next character after delay using animation_text to store the scheduled task
+            self.animation_text = self.root.after(TYPEWRITER_SPEED, self.type_dialogue, text, index + 1, callback, sans_speaking)
+        else:
+            # typing is complete
+            self.is_typing = False
+            # trigger callback if provided (used for button state changes)
+            if callback:
+                callback()
+    
     # === music ===
     def play_music(self):
         """start background music on loop"""
