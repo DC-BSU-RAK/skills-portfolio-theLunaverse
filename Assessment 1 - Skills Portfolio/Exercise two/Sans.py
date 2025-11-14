@@ -309,4 +309,19 @@ class SansJokeApp:
         # user can now click to see punchline
         self.set_button(self.btn_punchline, True)
     
+    def show_punchline(self):
+        """display punchline and switch to punch GIF"""
+        # only allow punchline if not typing and button is enabled
+        if not self.is_typing and self.button_enabled['punchline']:
+            # switch to punchline GIF animation
+            self.play_gif(self.gif_punch)
+            # stop any current animation
+            self.stop_typing()
+            self.is_typing = True
+            
+            # type punchline with Sans speaking sounds
+            self.type_dialogue(self.current_joke['punchline'], sans_speaking=True)
+            # disable punchline button after showing it
+            self.set_button(self.btn_punchline, False)
+    
 root.mainloop()
