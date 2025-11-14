@@ -73,6 +73,11 @@ QUIT_BTN_X = NEXT_JOKE_BTN_X + NEXT_JOKE_WIDTH + 5
 FONT_FAMILY = "Comic Sans MS"
 DIALOGUE_FONT_SIZE = 30
 SANS_COMMENT_FONT_SIZE = 19
+
+# sound effects
+LETTER_SOUND_PATH = os.path.join(BASE_DIR, "media", "voice_sans.wav")
+TYPEWRITER_SPEED = 50  # milliseconds between characters
+
 # === colors ===
 BG_COLOR = "#000000"
 DIALOGUE_TEXT_COLOR = "#000000"
