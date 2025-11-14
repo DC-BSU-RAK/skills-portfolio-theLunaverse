@@ -127,6 +127,11 @@ class SansJokeApp:
         self.img_next = ImageTk.PhotoImage(img)
         self.img_next_gray = ImageTk.PhotoImage(img.convert('L').convert('RGB'))
         
+        # quit button - no disabled state needed
+        img = Image.open(QUIT_IMG)
+        img = img.resize((QUIT_WIDTH, QUIT_HEIGHT), Image.LANCZOS)
+        self.img_quit = ImageTk.PhotoImage(img)
+        
     # === typewriter text effects ===
     def start_typing(self):
         """start both Sans comment and initial dialogue animations simultaneously"""
