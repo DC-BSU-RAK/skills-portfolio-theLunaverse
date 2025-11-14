@@ -346,4 +346,6 @@ class SansJokeApp:
         GIFPlayer.stop_all()
         # close window
         self.root.quit()
+
+app = SansJokeApp(root)
 root.mainloop()
