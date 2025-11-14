@@ -324,4 +324,15 @@ class SansJokeApp:
             # disable punchline button after showing it
             self.set_button(self.btn_punchline, False)
     
+    def next_joke(self):
+        """load another joke and reset for new round"""
+        # only allow next if button is enabled
+        if self.button_enabled['next']:
+            # stop current animation
+            self.stop_typing()
+            # re-enable tell joke button for new joke
+            self.set_button(self.btn_tell, True)
+            # start new joke cycle
+            self.tell_joke()
+    
 root.mainloop()
