@@ -4,6 +4,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 JOKES_FILE_PATH = os.path.join(BASE_DIR, "media", "randomJokes.txt")
 
+# background GIFs
+IDLE_GIF = os.path.join(BASE_DIR, "media", "sans_start.gif")
+SETUP_GIF = os.path.join(BASE_DIR, "media", "sans_joke.gif")
+PUNCH_GIF = os.path.join(BASE_DIR, "media", "sans_punchline.gif")
+
 # button Images
 TELL_JOKE_IMG = os.path.join(BASE_DIR, "media", "tell_joke.png")
 PUNCHLINE_IMG = os.path.join(BASE_DIR, "media", "punchline.png")
