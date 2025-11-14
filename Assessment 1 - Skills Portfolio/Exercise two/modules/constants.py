@@ -40,6 +40,10 @@ SANS_COMMENT_Y = 51
 SANS_COMMENT_WIDTH = 170
 SANS_COMMENT_HEIGHT = 165
 SANS_COMMENT_SPACING = 10
+
+# === button positioning ===
+BUTTON_Y = 478
+
 # === font Settings ===
 FONT_FAMILY = "Comic Sans MS"
 DIALOGUE_FONT_SIZE = 30
