@@ -104,4 +104,14 @@ class SansJokeApp:
         self.type_sans(SANS_COMMENT)
         # initial dialogue is narrator (no sound effects)
         self.type_dialogue(INITIAL_DIALOGUE_MESSAGE, sans_speaking=False)
+    # === music ===
+    def play_music(self):
+        """start background music on loop"""
+        # load music file
+        pygame.mixer.music.load(MUSIC_PATH)
+        pygame.mixer.music.play(-1) # -1 means infinite loop
+        self.is_music_playing = True
+        # show unmute icon to indicate music is playing
+        self.btn_mute.config(image=self.img_mute)
+    
 root.mainloop()
