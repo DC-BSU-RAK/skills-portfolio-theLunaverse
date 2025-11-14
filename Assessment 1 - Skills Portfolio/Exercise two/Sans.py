@@ -78,4 +78,9 @@ class SansJokeApp:
         self.btn_quit.place(x=QUIT_BTN_X, y=BUTTON_Y, width=QUIT_WIDTH, height=QUIT_HEIGHT)
         self.btn_quit.bind("<Button-1>", lambda e: self.quit())
         
+        # mute button - controls music and sound effects
+        self.btn_mute = tk.Label(self.canvas, image=self.img_mute, bg=BG_COLOR, cursor="hand2")
+        self.btn_mute.place(x=MUTE_BTN_X, y=MUTE_BTN_Y, width=MUTE_WIDTH, height=MUTE_HEIGHT)
+        self.btn_mute.bind("<Button-1>", lambda e: self.toggle_music())
+        
 root.mainloop()
